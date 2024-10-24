@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar retraíble -->
+  <mat-sidenav #drawer [mode]="sidenavMode" [opened]="!isScreenSmall">
+    <!-- Contenido del sidebar -->
+    <mat-nav-list>
+      <mat-list-item routerLink="/main/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>home</mat-icon> <!-- Ícono de inicio -->
+        <span>Inicio</span>
+      </mat-list-item>
+      <mat-list-item routerLink="/main/clientes" routerLinkActive="active">
+        <mat-icon>people</mat-icon> <!-- Ícono de clientes -->
+        <span>Clientes</span>
+      </mat-list-item>
+      <mat-list-item routerLink="/main/planes" routerLinkActive="active">
+        <mat-icon>view_agenda</mat-icon> <!-- Ícono de planes -->
+        <span>Planes</span>
+      </mat-list-item>
+      <mat-list-item routerLink="/main/servicios" routerLinkActive="active">
+        <mat-icon>construction</mat-icon> <!-- Ícono de servicios -->
+        <span>Servicios</span>
+      </mat-list-item>
+      <mat-list-item routerLink="/main/productos" routerLinkActive="active">
+        <mat-icon>devices</mat-icon> <!-- Ícono de productos -->
+        <span>Productos</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido Principal -->
+  <mat-sidenav-content>
+    <!-- Menú de encabezado -->
+    <mat-toolbar color="primary" class="top-toolbar">
+      <!-- Botón para ocultar/mostrar el sidebar -->
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <!-- Menú de usuario en la esquina superior derecha -->
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Perfil</button>
+        <button mat-menu-item (click)="onLogout()">Cerrar sesión</button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet> <!-- Renderizará las vistas de las rutas hijas -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

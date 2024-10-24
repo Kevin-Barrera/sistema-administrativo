@@ -1,0 +1,122 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.mat-sidenav {
+  background-color: #3f51b5 !important; /* Color del sidebar */
+  width: 300px !important; /* Aumentar el ancho del sidebar */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+/* Alinear los íconos y texto en el sidebar */
+.mat-list-item {
+  padding: 15px 20px !important;
+  font-size: 16px;
+  color: white !important;
+  line-height: 24px; /* Asegura una buena altura de línea para centrar verticalmente */
+  transition: background-color 0.3s ease-in-out;
+  display: flex; /* Usar inline-flex para asegurar alineación */
+  align-items: center; /* Centrar verticalmente el contenido dentro del ítem */
+}
+
+.mat-list-item mat-icon {
+  margin-right: 20px; /* Separar el ícono del texto */
+  font-size: 24px !important; /* Asegurar un tamaño apropiado del ícono */
+ 
+}
+
+.mat-list-item span {
+  display: inline-block;
+}
+
+/* Cambiar el color de los elementos del sidebar */
+.mat-mdc-list-item .mdc-list-item__content,
+.mat-mdc-list-item .mdc-list-item__content span {
+  color: white !important;
+  //vertical-align: middle !important; /* Forzar el color blanco */
+}
+
+/* Cambiar el color de hover */
+.mat-mdc-list-item:hover,
+.mat-mdc-list-item:hover .mdc-list-item__content,
+.mat-mdc-list-item:hover .mdc-list-item__content span {
+  background-color: #5c6bc0 !important;
+  color: white !important;
+  //vertical-align: middle !important;
+}
+
+/* Cambiar el color del elemento activo */
+.mat-mdc-list-item.active,
+.mat-mdc-list-item.active .mdc-list-item__content,
+.mat-mdc-list-item.active .mdc-list-item__content span {
+  background-color: #3949ab !important;
+  color: white !important;
+  vertical-align: middle !important;
+
+}
+
+/* Para pantallas pequeñas: el sidebar será modo 'over', es decir, superpuesto */
+@media (max-width: 768px) {
+  .mat-sidenav {
+    width: 300px !important;
+    position: absolute;
+    z-index: 1001;
+    display: none !important; /* Ocultar el sidebar cuando no esté abierto */
+  }
+
+  /* Mostrar el sidenav cuando el drawer está abierto */
+  .mat-sidenav.opened {
+    display: block !important; /* Mostrar cuando está abierto */
+  }
+
+  /* Asegurar que el contenido esté completamente visible cuando el sidenav esté cerrado */
+  .mat-sidenav-content {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .mat-toolbar {
+    justify-content: space-between; /* El botón de menú y el icono de usuario en extremos opuestos */
+  }
+}
+
+/* Estilo para el top toolbar */
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Espaciador entre el botón de menú y los iconos de usuario */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Contenido principal con padding */
+.main-content {
+  padding: 20px;
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .mat-toolbar {
+    justify-content: space-between; /* El botón de menú y el icono del usuario en extremos opuestos */
+  }
+
+  .mat-sidenav {
+    position: absolute;
+    width: 300px !important;
+    z-index: 1001;
+    height: 100%;
+  }
+
+  .mat-sidenav-content {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
